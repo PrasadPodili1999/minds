@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Tracks Management</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/Tracks/PostTrack.js"></script>
+<script src="/js/Tracks/PutTrack.js"></script>
+<script src="/js/Tracks/GetTrack.js"></script>
+<script src="/js/Tracks/DeleteTrack.js"></script>
+
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<!--  <script type="text/javascript">
+		function addMinds(){
+			var number=document.getElementById("num").value;
+			
+			var container=document.getElementById("mindcontainer");
+			
+			while (container.hasChildNodes()) {
+                container.removeChild(container.lastChild);
+            }
+			
+			for(i=1;i<=number;i++)
+			{
+				container.appendChild(document.createTextNode("mind"+i));
+				container.appendChild(document.createElement("br"));
+				var label1=document.createElement("label");
+				var input1=document.createElement("input");
+				label1.for="id";
+				input1.type="number";
+				input1.name="mind"+i;
+				input1.id="id";
+				input1.class="form-control";
+				input1.placeholder="enter mind id";
+				var label2=document.createElement("label");
+				var input2=document.createElement("input");
+				label2.for="name";
+				input2.type="text";
+				input2.name="mind"+i
+				input2.id="name";
+				input2.class="form-control";
+				input2.placeholder="enter mind name";
+				container.appendChild(label1);
+				container.appendChild(input1);
+				container.appendChild(document.createElement("br"));
+				container.appendChild(input2);
+				container.appendChild(document.createElement("br"));
+			}		
+		}
+	function validateTrack(){
+			if(document.myForm.Name.value=="")
+				{
+				alert("please provide name!");
+				document.myForm.Name.focus();
+				return false;
+				}
+			if(document.myForm.BasedOn.value=="")
+				{
+				alert("please provide technology!");
+				document.myForm.BasedOn.focus();
+				return false;
+				}
+		}
+	</script>-->
+</head>
+<body>
+	<div class="container" style="margin: 50px 0 0 0">
+		<button id="add" type="button" class="btn btn-success">add</button>
+		<button id="get" type="button" class="btn btn-success">get</button>
+		<button id="update" type="button" class="btn btn-success">update</button>
+		<button id="delete" type="button" class="btn btn-danger">delete</button>
+		<div id="deletemsg" style="margin: 10px 0px 10px 0px"></div>
+		<!--  --------------------------ADD TRACK------------------------------------------->
+
+
+		<div id="addTrack" class="row col-md-6" style="display: none">
+			<h3 style="color: blue">Add Track</h3>
+			<form id="trackForm" name="myForm" 
+				style="background-color: #7FA7B0; color: white; padding: 20px 20px 20px 20px">
+				<div class="form-group">
+					<label for="name">Name:</label> <input type="text"
+						class="form-control" id="name" name="Name" placeholder="Enter Name" />
+				</div>
+				<div class="form-group">
+					<label for="basedOn">BasedOn:</label> <input type="text"
+						class="form-control" id="basedOn" name="BasedOn"
+						placeholder="Enter Base Technology" />
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+
+			<div id="postTrackDiv" style="margin: 10px 0px 10px 0px;"></div>
+		</div>
+		<!--  --------------------------UPDATE TRACK------------------------------------------->
+		<div id="updateTrack" class="row col-md-6" style="display: none">
+			<h3>Here to Edit Info of Track:</h3>
+			<form id="customizedForm"
+				style='background-color: #7FA7B0; color: white; padding: 20px 20px 20px 20px'>
+				<div class="form-group">
+					<label for="updateId">TrackId</label> <input type="number"
+						class="form-control" id="updateId" placeholder="Enter Id" />
+				</div>
+				<div class="form-group">
+					<label for="updateName">Name:</label> <input type="text"
+						class="form-control" id="updateName" placeholder="Enter Name" />
+				</div>
+				<div class="form-group">
+					<label for="updateBasedOn">BasedOn:</label> <input type="text"
+						class="form-control" id="updateBasedOn"
+						placeholder="Enter Base Technology" />
+				</div>
+				<button type="submit" class="btn btn-default">Update</button>
+			</form>
+
+			<div id="putTrackDiv" style="margin: 10px 0px 10px 0px;"></div>
+
+		</div>
+		<!--  --------------------------VIEW TRACK------------------------------------------->
+
+		<div id="trackTableId" class="row col-md-6 table-responsive">
+
+			<h1>Track Table</h1>
+			<table id="trackTable" class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>BasedOn</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			<div id="resultMsgDiv"></div>
+		</div>
+
+		<!--  --------------------------ADD Lead------------------------------------------->
+
+
+		<!--  <div id="addLead" class="row col-md-6" style="display: none">
+			<h3 style="color: blue">Add Lead</h3>
+			<form id="leadForm"
+				style="background-color: #7FA7B0; color: white; padding: 20px 20px 20px 20px">
+				<div class="form-group">
+					<label for="name">Name:</label> <input type="text"
+						class="form-control" id="name" placeholder="Enter Name" />
+				</div>
+				<div class="form-group">
+					<label for="salary">Salary:</label> <input type="text"
+						class="form-control" id="salary" placeholder="Enter Salary" />
+				</div>
+						<label for="num">Number of Minds:</label> <input type="number"
+							class="form-control" id="num" placeholder="Enter number of minds" />
+					
+			  <div id="addMindContainer" class="row col-md-6" style="display:none">
+					<div class="form-group">
+						<label for="id">MindId:</label> <input type="text"
+							class="form-control" id="id" placeholder="Enter MindId" />
+					</div>
+					<div class="form-group">
+						<label for="name">Name:</label> <input type="text"
+							class="form-control" id="name" placeholder="Enter Name" />
+					</div>
+				</div>
+				<div class="form-group" id="mindcontainer"></div>
+
+				<button type="submit" class="btn btn-default">Submit</button>
+				 <a href="#" id="addminds" onclick="addMinds()">Add Minds</a>
+			</form>
+
+			<div id="postLeadDiv" style="margin: 10px 0px 10px 0px;"></div>
+		</div> -->
+
+
+	</div>
+</body>
+</html>

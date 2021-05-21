@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>MindTree Mind's Reviews Management</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/Reviews/PostReview.js"></script>
+<script src="/js/Reviews/GetReview.js"></script>
+<script src="/js/Reviews/PutReview.js"></script>
+<script src="/js/Reviews/DeleteReview.js"></script>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+</head>
+<body>
+
+	<div class="container" style="margin: 50px 0 0 0">
+		<button id="add" type="button" class="btn btn-success">AddReview</button>
+		<button id="get" type="button" class="btn btn-success">GetReview</button>
+		<button id="update" type="button" class="btn btn-success">UpdateReview</button>
+		<button id="delete" type="button" class="btn btn-danger">DeleteReview</button>
+		<button id="download" type="button" class="btn btn-success">Download Excel File Here</button>
+		<div id="deletemsg" style="margin: 10px 0px 10px 0px"></div>
+
+		<!-- '''''''''''''''''''''''''''ADD REVIEW'''''''''''''''''''''''''''''''' -->
+
+		<div id="addReview" class="row col-md-6" style="display: none">
+			<h1 style="color: blue">Add Review</h1>
+			<form id="addReviewForm" name="myForm"
+				style="background-color: #7FA7B0; color: white; padding: 20px 20px 20px 20px">
+				<div class="form-group">
+					<label for="capabilityNo">CapabilityNo:</label><input type="number"
+						class="form-control" id="capabilityNo" name="capabilityNo"
+						placeholder="Enter capabilityNo" />
+				</div>
+				<div class="form-group">
+					<label for="status">Status:</label><input type="text"
+						class="form-control" id="status" name="status"
+						placeholder="Enter Status" />
+				</div>
+				<div class="form-group">
+					<label for="mindId">Mind Id:</label><input type="number"
+						class="form-control" id="mindId" name="mindId"
+						placeholder="Enter mindId" />
+				</div>
+				<div class="form-group">
+					<label for="leadId">Lead Id:</label><input type="number"
+						class="form-control" id="leadId" name="leadId"
+						placeholder="Enter leadId" />
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+			<div id="postReviewDiv" style="margin: 10px 0px 10px 0px;"></div>
+		</div>
+		<!-- ''''''''''''''''''''''''''''''UPDATE REVIEW'''''''''''''''''''''''''''''''''''''''' -->
+
+		<div id="updateReview" class="row col-md-6" style="display: none">
+			<h3>Update Reviews Here</h3>
+			<form id="customizedForm"
+				style='background-color: #7FA7B0; color: white; padding: 20px 20px 20px 20px'>
+				<div class="form-group">
+					<label for="reviewId">ReviewId</label><input type="number"
+						class="form-control" id="reviewId" placeholder="Enter ReviewId">
+				</div>
+				<div class="form-group">
+					<label for="updatecapabilityNo">CapabilityNo</label><input type="number"
+						class="form-control" id="updatecapabilityNo" placeholder="Enter CapabilityNo">
+				</div>
+				<div class="form-group">
+					<label for="updatestatus">Status</label><input type="text"
+						class="form-control" id="updatestatus" placeholder="Enter status">
+				</div>
+				<div class="form-group">
+					<label for="updatemindId">Mind Id:</label><input type="number"
+						class="form-control" id="updatemindId" 
+						placeholder="Enter mindId" />
+				</div>
+				<div class="form-group">
+					<label for="updateleadId">Lead Id:</label><input type="number"
+						class="form-control" id="updateleadId" 
+						placeholder="Enter leadId" />
+				</div>
+				<button type="submit" class="btn btn-default">Update</button>
+			</form>
+			<div id="putReviewDiv" style="margin: 10px 0px 10px 0px;"></div>
+		</div>
+
+		<!-- ''''''''''''''''''''''''''''''VIEW REVIEWS'''''''''''''''''''''''''''''''''' -->
+
+		<div id="reviewTableId" class="row col-md-6 table-responsive">
+			<h1>REVIEWS TABLE</h1>
+			<table id="reviewTable" class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>ReviewId</th>
+						<th>CapabilityNo</th>
+						<th>Status</th>
+						<th>TakenFor</th>
+						<th>TakenBy</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			<div id="resultMsgDiv"></div>
+		</div>
+	</div>
+</body>
+</html>

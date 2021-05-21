@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>MindTree Minds Management</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/Minds/PostMind.js"></script>
+<script src="/js/Minds/GetMind.js"></script>
+<script src="/js/Minds/PutMind.js"></script>
+<script src="/js/Minds/DeleteMind.js"></script>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+</head>
+<body>
+
+	<div class="container" style="margin: 50px 0 0 0">
+		<button id="add" type="button" class="btn btn-success">AddMind</button>
+		<button id="get" type="button" class="btn btn-success">GetMind</button>
+		<button id="update" type="button" class="btn btn-success">UpdateMind</button>
+		<button id="delete" type="button" class="btn btn-danger">DeleteMind</button>
+		<button id="download" type="button" class="btn btn-success">Download Excel File Here</button>
+		<div id="deletemsg" style="margin: 10px 0px 10px 0px"></div>
+
+		<!-- '''''''''''''''''''''''''''ADD MIND'''''''''''''''''''''''''''''''' -->
+
+		<div id="addMind" class="row col-md-6" style="display: none">
+			<h1 style="color: blue">Add Mind</h1>
+			<form id="addMindForm" name="myForm"
+				style="background-color: #7FA7B0; color: white; padding: 20px 20px 20px 20px">
+				<div class="form-group">
+					<label for="name">Name:</label><input type="text"
+						class="form-control" id="name" name="Name"
+						placeholder="Enter Name.." />
+				</div>
+				<div class="form-group">
+					<label for="salary">Salary:</label><input type="text"
+						class="form-control" id="salary" name="Salary"
+						placeholder="Enter Salary..." />
+				</div>
+				<div class="form-group">
+					<label for="id">Track Id:</label><input type="number"
+						class="form-control" id="id" name="Id"
+						placeholder="Enter TrackId..." />
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+			<div id="postMindDiv" style="margin: 10px 0px 10px 0px;"></div>
+		</div>
+		<!-- ''''''''''''''''''''''''''''''UPDATE MINDS'''''''''''''''''''''''''''''''''''''''' -->
+
+		<div id="updateMind" class="row col-md-6" style="display: none">
+			<h3>Update Minds Here</h3>
+			<form id="customizedForm"
+				style='background-color: #7FA7B0; color: white; padding: 20px 20px 20px 20px'>
+				<div class="form-group">
+					<label for="mindId">MindId</label><input type="number"
+						class="form-control" id="mindId" placeholder="Enter MindId">
+				</div>
+				<div class="form-group">
+					<label for="mindName">MindName</label><input type="text"
+						class="form-control" id="mindName" placeholder="Enter MindName">
+				</div>
+				<div class="form-group">
+					<label for="mindSalary">MindSalary</label><input type="number"
+						class="form-control" id="mindSalary" placeholder="Enter MindSalary">
+				</div>
+			 	<div class="form-group">
+					<label for="trackId">TrackId</label><input type="number"
+						class="form-control" id="trackId" placeholder="Enter TrackId">
+				</div>
+				<!--<div class="form-group">
+					<label for="trackName">TrackName</label><input type="text"
+						class="form-control" id="trackName" placeholder="Enter TrackName">
+				</div>
+				<div class="form-group">
+					<label for="basedOn">Track BasedOn</label><input type="number"
+						class="form-control" id="basedOn" placeholder="Enter Base Technology">
+				</div>-->
+				<button type="submit" class="btn btn-default">Update</button>
+			</form>
+			<div id="putMindDiv" style="margin: 10px 0px 10px 0px;"></div>
+		</div>
+
+		<!-- ''''''''''''''''''''''''''''''VIEW MINDS'''''''''''''''''''''''''''''''''' -->
+
+		<div id="mindTableId" class="row col-md-6 table-responsive">
+			<h1>MINDS TABLE</h1>
+			<table id="mindTable" class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>MindId</th>
+						<th>Name</th>
+						<th>Salary</th>
+						<th>Track</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			<div id="resultMsgDiv"></div>
+		</div>
+	</div>
+</body>
+</html>
